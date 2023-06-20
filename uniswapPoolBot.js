@@ -3,13 +3,13 @@ const factoryUniswap = require('./uniswapFactory.json')
 const FactorySushi = require('./sushiSwapFactory.json')
 require('dotenv').config()
 
-const provider = new ethers.providers.JsonRpcProvider("https://eth-mainnet.g.alchemy.com/v2/96MrehoJu4frDMrrIsmILber-4Cht0-r")
+const provider = new ethers.providers.JsonRpcProvider("")
 
-const ARBprovider = new ethers.providers.JsonRpcProvider("https://arb-mainnet.g.alchemy.com/v2/aVHByRe2UXLqj7q-rmmAf3xBc2oW5AyU")
+const ARBprovider = new ethers.providers.JsonRpcProvider("")
 
 const PolygonProvier = new ethers.providers.JsonRpcProvider("https://polygon-rpc.com")
 
-const OptimismProvider = new ethers.providers.JsonRpcProvider("https://opt-mainnet.g.alchemy.com/v2/I0Q4uXJAXj4u-tnlEnbIgyHzNXAAuwQ6")
+const OptimismProvider = new ethers.providers.JsonRpcProvider(")
 
 const uniswapV3CoreAddress = "0x1F98431c8aD98523631AE4a59f267346ea31F984"
 
