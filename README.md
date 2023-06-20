@@ -1,7 +1,7 @@
 # PoolPeak
 Tool for querying Uniswap and Sushiswap v3 pools.
 
-# Define JsonRPC 
+# Define JsonRPC for Provider
 
  EX:  .JsonRpcProvider("https://polygon-rpc.com")
 
