@@ -1,6 +1,7 @@
 const { ethers } = require('ethers')
 const factoryUniswap = require('./uniswapFactory.json')
 const FactorySushi = require('./sushiSwapFactory.json')
+const ERC20ABI = require('./erc20.json')
 require('dotenv').config()
 
 const provider = new ethers.providers.JsonRpcProvider("https://eth-mainnet.g.alchemy.com/v2/96MrehoJu4frDMrrIsmILber-4Cht0-r")
@@ -14,6 +15,36 @@ const OptimismProvider = new ethers.providers.JsonRpcProvider("https://opt-mainn
 const uniswapV3CoreAddress = "0x1F98431c8aD98523631AE4a59f267346ea31F984"
 
 const sushiSwapV3CoreAddress = "0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac"
+
+
+async function UniMemPool() {
+  var url = "wss://falling-summer-aura.discover.quiknode.pro/d6a78f45b6b10351b3ce4578d18604f2294a6022/"
+  var uniswapRouter2 = '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D'
+  const provider = new ethers.providers.WebSocketProvider(url)
+  
+  
+
+  provider.on("pending", async (tx) => {
+      const txInfo = await provider.getTransaction(tx)
+      try {
+        if(txInfo.to == uniswapRouter2){
+          console.log(txInfo.from) 
+          
+        }
+        
+
+
+      } catch (error) {
+        console.log("no data to show")
+        
+      }
+      
+      
+      
+      //console.log(txInfo);
+    });
+
+}
 
 async function main() {
     
@@ -44,6 +75,13 @@ async function main() {
 
     
 }
+
+
+
+
+
+  
+
 
 async function Arbmain() {
     
@@ -171,7 +209,10 @@ async function Arbmain() {
     
   }
 
+  UniMemPool()
+  
 //main()
+//getPoolDetails(poolAddress)
 //Arbmain()
 //Optmain()
 //Polymain()
