@@ -9,7 +9,7 @@ const ARBprovider = new ethers.providers.JsonRpcProvider("")
 
 const PolygonProvier = new ethers.providers.JsonRpcProvider("https://polygon-rpc.com")
 
-const OptimismProvider = new ethers.providers.JsonRpcProvider(")
+const OptimismProvider = new ethers.providers.JsonRpcProvider("")
 
 const uniswapV3CoreAddress = "0x1F98431c8aD98523631AE4a59f267346ea31F984"
 
