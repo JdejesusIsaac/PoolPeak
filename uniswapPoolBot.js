@@ -16,12 +16,17 @@ const ARBprovider = new ethers.providers.JsonRpcProvider("")
 
 const PolygonProvier = new ethers.providers.JsonRpcProvider("https://polygon-rpc.com")
 
+<<<<<<< HEAD
 const OptimismProvider = new ethers.providers.JsonRpcProvider("https://mainnet.optimism.io")
+=======
+const OptimismProvider = new ethers.providers.JsonRpcProvider("")
+>>>>>>> 64779e82887c5744c3f9411c05ffc3aed3d501a1
 
 const uniswapV3CoreAddress = "0x1F98431c8aD98523631AE4a59f267346ea31F984"
 
 const sushiSwapV3CoreAddress = "0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac"
 
+<<<<<<< HEAD
 const baseProvider = new ethers.providers.JsonRpcProvider("https://mainnet.base.org")
 
 //const mevshare = MevShareClient.useEthereumMainnet(authSigner)
@@ -45,6 +50,9 @@ async function mevStart() {
 
 
 
+=======
+// query uniswap mempool for pending transaction
+>>>>>>> 64779e82887c5744c3f9411c05ffc3aed3d501a1
 
 async function UniMemPool() {
   var url = "wss://falling-summer-aura.discover.quiknode.pro/d6a78f45b6b10351b3ce4578d18604f2294a6022/"
@@ -267,6 +275,7 @@ async function Arbmain() {
   
     
   }
+<<<<<<< HEAD
 
   //mevStart()
   //baseUni()
@@ -275,6 +284,10 @@ async function Arbmain() {
   
  main()
 //getPoolDetails(poolAddress)
+=======
+UniMemPool()
+//main()
+>>>>>>> 64779e82887c5744c3f9411c05ffc3aed3d501a1
 //Arbmain()
 //Optmain()
 //Polymain()
