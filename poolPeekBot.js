@@ -5,7 +5,7 @@ const factoryUniswap = require('./uniswapFactory.json');
 
 require('dotenv').config();
 
-const provider = new ethers.providers.JsonRpcProvider("https://eth-mainnet.g.alchemy.com/v2/96MrehoJu4frDMrrIsmILber-4Cht0-r");
+const provider = new ethers.providers.JsonRpcProvider("");
 const PolygonProvier = new ethers.providers.JsonRpcProvider("https://polygon-rpc.com");
 
 const uniswapV3CoreAddress = "0x1F98431c8aD98523631AE4a59f267346ea31F984"
