@@ -1,20 +1,49 @@
-const { ethers } = require('ethers')
+const { ethers, Wallet } = require('ethers')
+const MevShareClient = require('@flashbots/mev-share-client');
 const factoryUniswap = require('./uniswapFactory.json')
 const FactorySushi = require('./sushiSwapFactory.json')
 const ERC20ABI = require('./erc20.json')
 require('dotenv').config()
 
+
+
+//const FB_REPUTATION_PRIVATE_KEY = 
 const provider = new ethers.providers.JsonRpcProvider("https://eth-mainnet.g.alchemy.com/v2/96MrehoJu4frDMrrIsmILber-4Cht0-r")
 
-const ARBprovider = new ethers.providers.JsonRpcProvider("https://arb-mainnet.g.alchemy.com/v2/aVHByRe2UXLqj7q-rmmAf3xBc2oW5AyU")
+//const authSigner = new Wallet(FB_REPUTATION_PRIVATE_KEY, provider)
+
+const ARBprovider = new ethers.providers.JsonRpcProvider("")
 
 const PolygonProvier = new ethers.providers.JsonRpcProvider("https://polygon-rpc.com")
 
-const OptimismProvider = new ethers.providers.JsonRpcProvider("https://opt-mainnet.g.alchemy.com/v2/I0Q4uXJAXj4u-tnlEnbIgyHzNXAAuwQ6")
+const OptimismProvider = new ethers.providers.JsonRpcProvider("https://mainnet.optimism.io")
 
 const uniswapV3CoreAddress = "0x1F98431c8aD98523631AE4a59f267346ea31F984"
 
 const sushiSwapV3CoreAddress = "0xC0AEe478e3658e2610c5F7A4A2E1777cE9e4f2Ac"
+
+const baseProvider = new ethers.providers.JsonRpcProvider("https://mainnet.base.org")
+
+//const mevshare = MevShareClient.useEthereumMainnet(authSigner)
+
+
+
+async function mevStart() {
+  
+  console.log("mev-share auth address: " + authSigner.address);
+  //console.log("executor address: " + executorWallet.address);
+
+  // bot only executes one trade, so get the nonce now
+  //const nonce = await executorWallet.getNonce("latest");
+
+  mevshare.on('transaction', async (pendingTx) => {
+    // callback to handle pending transaction
+    console.log(pendingTx);
+  });
+}
+
+
+
 
 
 async function UniMemPool() {
@@ -74,6 +103,36 @@ async function main() {
     
 
     
+}
+
+async function baseUni() {
+    
+  /// get data from 'PoolCreated' event!
+  const uniswapV3CoreContract = new ethers.Contract(
+    uniswapV3CoreAddress,
+    factoryUniswap, // ABI of the Uniswap V3 core contract
+    baseProvider
+  )
+
+  ///
+
+  const currentBlockNumber = await baseProvider.getBlockNumber()
+  const fromBlock = currentBlockNumber - 10 // get events from the last 5000 blocks
+  const toBlock = "latest"
+
+  const newPoolEvents = await uniswapV3CoreContract.queryFilter(
+    "PoolCreated",
+    fromBlock,
+    toBlock
+  )
+
+  const newPools = newPoolEvents.map(event => event.args)
+
+  console.log(newPools)
+
+  
+
+  
 }
 
 
@@ -209,9 +268,12 @@ async function Arbmain() {
     
   }
 
-  UniMemPool()
+  //mevStart()
+  //baseUni()
+
+  //UniMemPool()
   
-//main()
+ main()
 //getPoolDetails(poolAddress)
 //Arbmain()
 //Optmain()
