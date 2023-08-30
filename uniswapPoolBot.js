@@ -8,7 +8,8 @@ require('dotenv').config()
 
 
 //const FB_REPUTATION_PRIVATE_KEY = 
-const provider = new ethers.providers.JsonRpcProvider("https://eth-mainnet.g.alchemy.com/v2/96MrehoJu4frDMrrIsmILber-4Cht0-r")
+const provider = new ethers.providers.JsonRpcProvider("")
+                                                    
 
 //const authSigner = new Wallet(FB_REPUTATION_PRIVATE_KEY, provider)
 
